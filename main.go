@@ -55,7 +55,7 @@ func main() {
 	}
 	fmt.Println("DB connected!")
 
-	http.HandleFunc("/ws", updateRoute)
+	http.HandleFunc("/", updateRoute)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -92,6 +92,7 @@ func updateRoute(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			panic(err.Error())
 		}
+		log.Println("Success")
 		err = ws.WriteMessage(1, []byte("Success"))
 		if err != nil {
 			log.Println("write", err)
