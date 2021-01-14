@@ -80,6 +80,7 @@ func updateRoute(w http.ResponseWriter, r *http.Request) {
 	var route Route
 	for {
 		err = ws.ReadJSON(&route)
+		print(route.Points)
 		if err != nil {
 			log.Println("read:", err)
 			break
